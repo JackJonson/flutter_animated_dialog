@@ -39,8 +39,17 @@ enum DialogTransitionType {
   ///Scale animation
   scale,
 
+  ///Fade scale animation
+  fadeScale,
+
   ///Rotation animation
   rotate,
+
+  ///Scale rotate animation
+  scaleRotate,
+
+  ///Fade rotate animation
+  fadeRotate,
 
   ///3D Rotation animation
   rotate3D,
@@ -229,11 +238,62 @@ Future<T> showAnimatedDialog<T>({
             child: child,
           );
           break;
+        case DialogTransitionType.fadeScale:
+          return ScaleTransition(
+            alignment: alignment,
+            scale: CurvedAnimation(
+              parent: animation,
+              curve: Interval(
+                0.00,
+                0.50,
+                curve: curve,
+              ),
+            ),
+            child: FadeTransition(
+              opacity: CurvedAnimation(
+                parent: animation,
+                curve: curve,
+              ),
+              child: child,
+            ),
+          );
+          break;
+        case DialogTransitionType.scaleRotate:
+          return ScaleTransition(
+            alignment: alignment,
+            scale: CurvedAnimation(
+              parent: animation,
+              curve: Interval(
+                0.00,
+                0.50,
+                curve: curve,
+              ),
+            ),
+            child: RotationTransition(
+              alignment: alignment,
+              turns: animation,
+              child: child,
+            ),
+          );
+          break;
         case DialogTransitionType.rotate:
           return RotationTransition(
             alignment: alignment,
             turns: animation,
             child: child,
+          );
+          break;
+        case DialogTransitionType.fadeRotate:
+          return RotationTransition(
+            alignment: alignment,
+            turns: animation,
+            child: FadeTransition(
+              opacity: CurvedAnimation(
+                parent: animation,
+                curve: curve,
+              ),
+              child: child,
+            ),
           );
           break;
         case DialogTransitionType.rotate3D:

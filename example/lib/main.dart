@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -24,8 +23,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final appTitle = 'Styled Toast Example';
-    return  MaterialApp(
+    final appTitle = 'Animated Dialog Example';
+    return MaterialApp(
       title: appTitle,
       showPerformanceOverlay: showPerformance,
       home: LayoutBuilder(
@@ -83,13 +82,28 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(left: 15.0),
               height: 35.0,
               alignment: Alignment.centerLeft,
-              child: Text('Normal Toast'),
+              child: Text('Classic toast'),
               color: const Color(0xFFDDDDDD),
             ),
             ListTile(
-              title: Text('Normal toast'),
+              title: Text('Default'),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                );
               },
             ),
             Divider(
@@ -97,10 +111,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(custom borderRadius textStyle etc)",
+                "Fade",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.fade,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -108,10 +140,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(position)",
+                "Slide from top",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromTop,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -119,9 +169,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(custom position)",
+                "Slide from top and fade",
               ),
               onTap: () {
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromTopFade,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -129,10 +198,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(fade anim)",
+                "Slide from bottom",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromBottom,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -140,10 +227,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(slideFromTop anim)",
+                "Slide from bottom and fade",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromBottomFade,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -151,10 +256,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(slideFromTopFade anim)",
+                "Slide from left",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromLeft,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -162,10 +285,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(slideFromBottom anim)",
+                "Slide from left and fade",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromLeftFade,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -173,10 +314,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(slideFromBottomFade anim)",
+                "Slide from right",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromRight,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -184,10 +343,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "normal toast(slideFromLeft anim)",
+                "Slide from right and fade",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.slideFromRightFade,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -195,10 +372,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "normal toast(slideFromLeftFade anim)",
+                "Scale",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.scale,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -206,10 +401,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(slideFromRight anim)",
+                "Fade scale",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.fadeScale,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -217,10 +430,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(slideFromRightFade anim)",
+                "Scale rotate",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.scaleRotate,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -228,10 +459,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "normal toast(size anim)",
+                "Rotate",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.rotate,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -239,10 +488,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "normal toast(sizefade anim)",
+                "Fade rotate",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.fadeRotate,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -250,10 +517,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "normal toast(scale anim)",
+                "Rotate 3D",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.rotate3D,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -261,10 +546,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(fadeScale anim)",
+                "Size",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.size,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -272,10 +575,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(rotate anim)",
+                "Size fade",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.sizeFade,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
@@ -283,76 +604,102 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "Normal toast(fadeRotate anim)",
+                "No animation",
               ),
               onTap: () {
-
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'content',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.none,
+                  curve: Curves.fastOutSlowIn,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             Divider(
               height: 0.5,
             ),
-            ListTile(
-              title: Text(
-                "Normal toast(scaleRotate anim)",
-              ),
-              onTap: () {
 
-              },
-            ),
-            Divider(
-              height: 0.5,
-            ),
-            ListTile(
-              title: Text(
-                "Normal toast with onDismissed($dismissRemind)",
-              ),
-              onTap: () {
-
-              },
-            ),
-            Divider(
-              height: 0.5,
-            ),
-
-            ///Custom toast content widget
+            ///Classic dialog widget
             Container(
               margin: EdgeInsets.only(bottom: 10.0, top: 50.0),
               padding: EdgeInsets.only(left: 15.0),
               height: 35.0,
               alignment: Alignment.centerLeft,
-              child: Text('Custom toast content widget'),
+              child: Text('Classic dialog widget'),
               color: const Color(0xFFDDDDDD),
             ),
             ListTile(
               title: Text(
-                "Custom toast content widget",
+                "General dialog",
               ),
-              onTap: () {
-
-              },
+              onTap: () {},
             ),
             Divider(
               height: 0.5,
             ),
             ListTile(
               title: Text(
-                "Custom toast content widget with icon convinient fail",
+                "List dialog",
               ),
-              onTap: () {
-
-              },
+              onTap: () {},
             ),
             Divider(
               height: 0.5,
             ),
             ListTile(
               title: Text(
-                "Custom toast content widget with icon convinient success",
+                "List single select",
               ),
-              onTap: () {
-
-              },
+              onTap: () {},
+            ),
+            Divider(
+              height: 0.5,
+            ),
+            ListTile(
+              title: Text(
+                "List multiple select",
+              ),
+              onTap: () {},
+            ),
+            Divider(
+              height: 0.5,
+            ),
+            ListTile(
+              title: Text(
+                "Radio",
+              ),
+              onTap: () {},
+            ),
+            Divider(
+              height: 0.5,
+            ),
+            ListTile(
+              title: Text(
+                "Color picker",
+              ),
+              onTap: () {},
+            ),
+            Divider(
+              height: 0.5,
+            ),
+            ListTile(
+              title: Text(
+                "Custom dialog",
+              ),
+              onTap: () {},
             ),
             Divider(
               height: 0.5,
