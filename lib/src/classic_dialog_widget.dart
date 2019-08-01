@@ -181,6 +181,17 @@ class ClassicListDialogWidget<T> extends StatefulWidget {
 class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
   T selectedValue;
 
+  List<bool> valueList;
+  List<T> selectedList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    valueList = List.generate(widget.dataList.length, (index) {
+      return false;
+    }).toList(growable: true);
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -218,18 +229,19 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                 );
                 break;
               case ListType.multiSelect:
-                return RadioListTile<T>(
+                return CheckboxListTile(
+                  selected: valueList[index],
+                  value: valueList[index],
                   title: Text(
                     widget.dataList[index].toString(),
                     style: Theme.of(context).dialogTheme.contentTextStyle,
                   ),
-                  value: widget.dataList[index],
-                  groupValue: selectedValue,
                   onChanged: (value) {
                     setState(() {
-                      selectedValue = value;
+                      valueList[index] = value;
                     });
                   },
+                  activeColor: Theme.of(context).accentColor,
                 );
                 break;
               default:
@@ -254,34 +266,51 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
       content: contentWidget,
       actions: widget.actions ??
           [
-            widget.onNegativeClick != null
-                ? FlatButton(
-                    onPressed: widget.onNegativeClick,
-                    splashColor: Theme.of(context).splashColor,
-                    highlightColor: Theme.of(context).highlightColor,
-                    child: new Text(
-                      widget.negativeText ?? 'cancel',
-                      style: TextStyle(
-                          color: Theme.of(context).textTheme.overline.color,
-                          fontSize:
-                              Theme.of(context).textTheme.button.fontSize),
-                    ),
-                  )
-                : null,
-            widget.onPositiveClick != null
-                ? FlatButton(
-                    onPressed: widget.onPositiveClick,
-                    splashColor: Theme.of(context).splashColor,
-                    highlightColor: Theme.of(context).highlightColor,
-                    child: new Text(
-                      widget.positiveText ?? 'confirm',
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize:
-                              Theme.of(context).textTheme.button.fontSize),
-                    ),
-                  )
-                : null,
+            FlatButton(
+              onPressed: widget.onNegativeClick ??
+                  () {
+                    Navigator.of(context).pop();
+                  },
+              splashColor: Theme.of(context).splashColor,
+              highlightColor: Theme.of(context).highlightColor,
+              child: new Text(
+                widget.negativeText ?? 'cancel',
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.overline.color,
+                    fontSize: Theme.of(context).textTheme.button.fontSize),
+              ),
+            ),
+            FlatButton(
+              onPressed: widget.onPositiveClick ??
+                  () {
+                    switch (widget.listType) {
+                      case ListType.single:
+                        Navigator.of(context).pop();
+                        break;
+                      case ListType.singleSelect:
+                        Navigator.of(context).pop(selectedValue);
+                        break;
+                      case ListType.multiSelect:
+                        selectedList.clear();
+                        int length=valueList.length;
+                        for (int i=0;i<length;i++) {
+                          if (valueList[i]) {
+                            selectedList.add(widget.dataList[i]);
+                          }
+                        }
+                        Navigator.of(context).pop(selectedList);
+                        break;
+                    }
+                  },
+              splashColor: Theme.of(context).splashColor,
+              highlightColor: Theme.of(context).highlightColor,
+              child: new Text(
+                widget.positiveText ?? 'confirm',
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: Theme.of(context).textTheme.button.fontSize),
+              ),
+            ),
           ],
       elevation: 0.0,
       shape: Theme.of(context).dialogTheme.shape,

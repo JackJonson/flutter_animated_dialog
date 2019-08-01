@@ -61,6 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String selectedModel;
 
+  String singleSelectedModel;
+
+  String multiSelectedModel;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -712,10 +716,33 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List single select",
+                "List single select${singleSelectedModel != null ? '(' + singleSelectedModel + ')' : ''}",
               ),
-              onTap: () {
-
+              onTap: () async{
+                ListDataModel selectedModel =
+                    await showAnimatedDialog<ListDataModel>(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicListDialogWidget(
+                      titleText: 'Title',
+                      listType: ListType.singleSelect,
+                      dataList: List.generate(
+                        20,
+                            (index) {
+                          return ListDataModel(
+                              name: 'Name$index', value: 'Value$index');
+                        },
+                      ),
+                    );
+                  },
+                  animationType: DialogTransitionType.size,
+                  curve: Curves.linear,
+                );
+                print('selectedMode:${selectedModel?.toString()}');
+                setState(() {
+                  this.singleSelectedModel=selectedModel?.toString();
+                });
               },
             ),
             Divider(
@@ -723,9 +750,34 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List multiple select",
+                "List multiple select${multiSelectedModel != null ? '(' + multiSelectedModel + ')' : ''}",
               ),
-              onTap: () {},
+              onTap: () async{
+
+                List<ListDataModel>selectedList=await showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicListDialogWidget<ListDataModel>(
+                      titleText: 'Title',
+                      listType: ListType.multiSelect,
+                      dataList: List.generate(
+                        20,
+                            (index) {
+                          return ListDataModel(
+                              name: 'Name$index', value: 'Value$index');
+                        },
+                      ),
+                    );
+                  },
+                  animationType: DialogTransitionType.size,
+                  curve: Curves.linear,
+                );
+                print('selectedMode:${selectedList?.toString()}');
+                setState(() {
+                  this.multiSelectedModel=selectedList?.toString();
+                });
+              },
             ),
             Divider(
               height: 0.5,
