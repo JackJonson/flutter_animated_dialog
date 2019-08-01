@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
+import 'model/list_data_model.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -57,7 +59,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Whether the green box should be visible or invisible
 
-  String dismissRemind = '';
+  String selectedModel;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(left: 15.0),
               height: 35.0,
               alignment: Alignment.centerLeft,
-              child: Text('Classic toast'),
+              child: Text('General dialog'),
               color: const Color(0xFFDDDDDD),
             ),
             ListTile(
@@ -645,16 +647,65 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text(
                 "General dialog",
               ),
-              onTap: () {},
+              onTap: () {
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicGeneralDialogWidget(
+                      titleText: 'Title',
+                      contentText: 'This is general dialog.',
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.size,
+                  curve: Curves.linear,
+                );
+              },
             ),
             Divider(
               height: 0.5,
             ),
             ListTile(
               title: Text(
-                "List dialog",
+                "List dialog ${selectedModel != null ? '(' + selectedModel + ')' : ''}",
               ),
-              onTap: () {},
+              onTap: () async {
+                ListDataModel selectedModel =
+                    await showAnimatedDialog<ListDataModel>(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return ClassicListDialogWidget(
+                      titleText: 'Title',
+                      dataList: List.generate(
+                        20,
+                        (index) {
+                          return ListDataModel(
+                              name: 'Name$index', value: 'Value$index');
+                        },
+                      ),
+                      onPositiveClick: () {
+                        Navigator.of(context).pop();
+                      },
+                      onNegativeClick: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  },
+                  animationType: DialogTransitionType.size,
+                  curve: Curves.linear,
+                );
+                print('selectedMode:${selectedModel?.toString()}');
+                setState(() {
+                  this.selectedModel=selectedModel?.toString();
+                });
+              },
             ),
             Divider(
               height: 0.5,
@@ -663,7 +714,9 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text(
                 "List single select",
               ),
-              onTap: () {},
+              onTap: () {
+
+              },
             ),
             Divider(
               height: 0.5,
@@ -671,15 +724,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               title: Text(
                 "List multiple select",
-              ),
-              onTap: () {},
-            ),
-            Divider(
-              height: 0.5,
-            ),
-            ListTile(
-              title: Text(
-                "Radio",
               ),
               onTap: () {},
             ),
