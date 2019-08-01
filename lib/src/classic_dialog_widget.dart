@@ -137,6 +137,15 @@ class ClassicListDialogWidget<T> extends StatefulWidget {
   ///List type
   final ListType listType;
 
+  ///Where to place control relative to the text
+  final ListTileControlAffinity controlAffinity;
+
+  ///Selected indexes when [listType] is [ListType.multiSelect]
+  final List<int> selectedIndexes;
+
+  ///Selected index when [listType] is [ListType.singleSelect]
+  final int selectedIndex;
+
 //  ///Single selection callback
 //  final OnSingleSelectionCallback onListSingleSelectionCallback;
 //
@@ -164,6 +173,9 @@ class ClassicListDialogWidget<T> extends StatefulWidget {
     this.listItem,
     this.onListItemClick,
     this.listType = ListType.single,
+    this.controlAffinity = ListTileControlAffinity.leading,
+    this.selectedIndexes,
+    this.selectedIndex,
     this.actions,
     this.negativeText,
     this.positiveText,
@@ -179,17 +191,22 @@ class ClassicListDialogWidget<T> extends StatefulWidget {
 }
 
 class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
-  T selectedValue;
-
+  int selectedIndex;
   List<bool> valueList;
-  List<T> selectedList = [];
+  List<int> selectedIndexes = [];
 
   @override
   void initState() {
     super.initState();
     valueList = List.generate(widget.dataList.length, (index) {
+      if (widget.selectedIndexes != null &&
+          widget.selectedIndexes.contains(index)) {
+        return true;
+      }
       return false;
     }).toList(growable: true);
+    selectedIndex=widget.selectedIndex;
+    selectedIndexes=widget.selectedIndexes;
   }
 
   @override
@@ -209,27 +226,29 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                   ),
                   onTap: widget.onListItemClick ??
                       () {
-                        Navigator.of(context).pop(widget.dataList[index]);
+                        Navigator.of(context).pop(index);
                       },
                 );
                 break;
               case ListType.singleSelect:
-                return RadioListTile<T>(
+                return RadioListTile<int>(
+                  controlAffinity: widget.controlAffinity,
                   title: Text(
                     widget.dataList[index].toString(),
                     style: Theme.of(context).dialogTheme.contentTextStyle,
                   ),
-                  value: widget.dataList[index],
-                  groupValue: selectedValue,
+                  value: index,
+                  groupValue: selectedIndex,
                   onChanged: (value) {
                     setState(() {
-                      selectedValue = value;
+                      selectedIndex = value;
                     });
                   },
                 );
                 break;
               case ListType.multiSelect:
                 return CheckboxListTile(
+                  controlAffinity: widget.controlAffinity,
                   selected: valueList[index],
                   value: valueList[index],
                   title: Text(
@@ -266,20 +285,20 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
       content: contentWidget,
       actions: widget.actions ??
           [
-            FlatButton(
-              onPressed: widget.onNegativeClick ??
-                  () {
-                    Navigator.of(context).pop();
-                  },
-              splashColor: Theme.of(context).splashColor,
-              highlightColor: Theme.of(context).highlightColor,
-              child: new Text(
-                widget.negativeText ?? 'cancel',
-                style: TextStyle(
-                    color: Theme.of(context).textTheme.overline.color,
-                    fontSize: Theme.of(context).textTheme.button.fontSize),
-              ),
-            ),
+            widget.onNegativeClick != null
+                ? FlatButton(
+                    onPressed: widget.onNegativeClick,
+                    splashColor: Theme.of(context).splashColor,
+                    highlightColor: Theme.of(context).highlightColor,
+                    child: new Text(
+                      widget.negativeText ?? 'cancel',
+                      style: TextStyle(
+                          color: Theme.of(context).textTheme.overline.color,
+                          fontSize:
+                              Theme.of(context).textTheme.button.fontSize),
+                    ),
+                  )
+                : null,
             FlatButton(
               onPressed: widget.onPositiveClick ??
                   () {
@@ -288,17 +307,17 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                         Navigator.of(context).pop();
                         break;
                       case ListType.singleSelect:
-                        Navigator.of(context).pop(selectedValue);
+                        Navigator.of(context).pop(selectedIndex);
                         break;
                       case ListType.multiSelect:
-                        selectedList.clear();
-                        int length=valueList.length;
-                        for (int i=0;i<length;i++) {
+                        selectedIndexes=[];
+                        int length = valueList.length;
+                        for (int i = 0; i < length; i++) {
                           if (valueList[i]) {
-                            selectedList.add(widget.dataList[i]);
+                            selectedIndexes.add(i);
                           }
                         }
-                        Navigator.of(context).pop(selectedList);
+                        Navigator.of(context).pop(selectedIndexes);
                         break;
                     }
                   },

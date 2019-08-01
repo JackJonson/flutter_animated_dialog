@@ -59,11 +59,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Whether the green box should be visible or invisible
 
-  String selectedModel;
+  String selectedIndexText;
 
-  String singleSelectedModel;
+  int selectIdx;
 
-  String multiSelectedModel;
+  String singleSelectedIndexText;
+
+  int selectIndex;
+
+  String multiSelectedIndexesText;
+
+  List<int> selectedIndexes;
 
   @override
   Widget build(BuildContext context) {
@@ -677,15 +683,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List dialog ${selectedModel != null ? '(' + selectedModel + ')' : ''}",
+                "List dialog ${selectedIndexText != null && selectedIndexText.isNotEmpty ? '(index:' + selectedIndexText + ')' : ''}",
               ),
               onTap: () async {
-                ListDataModel selectedModel =
-                    await showAnimatedDialog<ListDataModel>(
+                int index = await showAnimatedDialog(
                   context: context,
                   barrierDismissible: true,
                   builder: (BuildContext context) {
-                    return ClassicListDialogWidget(
+                    return ClassicListDialogWidget<ListDataModel>(
                       titleText: 'Title',
                       dataList: List.generate(
                         20,
@@ -705,9 +710,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   animationType: DialogTransitionType.size,
                   curve: Curves.linear,
                 );
-                print('selectedMode:${selectedModel?.toString()}');
+                selectIdx = index ?? selectIdx;
+                print('selectedIndex:$selectIdx');
                 setState(() {
-                  this.selectedModel=selectedModel?.toString();
+                  this.selectedIndexText = '${selectIdx ?? ''}';
                 });
               },
             ),
@@ -716,20 +722,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List single select${singleSelectedModel != null ? '(' + singleSelectedModel + ')' : ''}",
+                "List single select${singleSelectedIndexText != null && singleSelectedIndexText.isNotEmpty ? '(index:' + singleSelectedIndexText + ')' : ''}",
               ),
-              onTap: () async{
-                ListDataModel selectedModel =
-                    await showAnimatedDialog<ListDataModel>(
+              onTap: () async {
+                int index = await showAnimatedDialog(
                   context: context,
                   barrierDismissible: true,
                   builder: (BuildContext context) {
-                    return ClassicListDialogWidget(
+                    return ClassicListDialogWidget<ListDataModel>(
                       titleText: 'Title',
                       listType: ListType.singleSelect,
+                      selectedIndex: selectIndex,
                       dataList: List.generate(
                         20,
-                            (index) {
+                        (index) {
                           return ListDataModel(
                               name: 'Name$index', value: 'Value$index');
                         },
@@ -739,9 +745,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   animationType: DialogTransitionType.size,
                   curve: Curves.linear,
                 );
-                print('selectedMode:${selectedModel?.toString()}');
+                selectIndex = index ?? selectIndex;
+
+                print('selectedIndex:$selectIndex');
                 setState(() {
-                  this.singleSelectedModel=selectedModel?.toString();
+                  this.singleSelectedIndexText = '${selectIndex ?? ''}';
                 });
               },
             ),
@@ -750,20 +758,20 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List multiple select${multiSelectedModel != null ? '(' + multiSelectedModel + ')' : ''}",
+                "List multiple select${multiSelectedIndexesText != null && multiSelectedIndexesText.isNotEmpty ? '(index:' + multiSelectedIndexesText + ')' : ''}",
               ),
-              onTap: () async{
-
-                List<ListDataModel>selectedList=await showAnimatedDialog(
+              onTap: () async {
+                List<int> indexes = await showAnimatedDialog(
                   context: context,
                   barrierDismissible: true,
                   builder: (BuildContext context) {
                     return ClassicListDialogWidget<ListDataModel>(
                       titleText: 'Title',
                       listType: ListType.multiSelect,
+                      selectedIndexes: selectedIndexes,
                       dataList: List.generate(
                         20,
-                            (index) {
+                        (index) {
                           return ListDataModel(
                               name: 'Name$index', value: 'Value$index');
                         },
@@ -773,20 +781,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   animationType: DialogTransitionType.size,
                   curve: Curves.linear,
                 );
-                print('selectedMode:${selectedList?.toString()}');
+
+                selectedIndexes = indexes ?? selectedIndexes;
+                print('selectedIndex:${selectedIndexes?.toString()}');
                 setState(() {
-                  this.multiSelectedModel=selectedList?.toString();
+                  this.multiSelectedIndexesText =
+                      selectedIndexes != null && selectedIndexes.length > 0
+                          ? selectedIndexes.toString()
+                          : '';
                 });
               },
-            ),
-            Divider(
-              height: 0.5,
-            ),
-            ListTile(
-              title: Text(
-                "Color picker",
-              ),
-              onTap: () {},
             ),
             Divider(
               height: 0.5,
@@ -795,7 +799,28 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text(
                 "Custom dialog",
               ),
-              onTap: () {},
+              onTap: () {
+                showAnimatedDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) {
+                    return SingleChildScrollView(
+                        child: ListBody(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.all(10.0),
+                          width: 200.0,
+                          child: FlutterLogo(
+                            size: 150.0,
+                          ),
+                        )
+                      ],
+                    ));
+                  },
+                  animationType: DialogTransitionType.size,
+                  curve: Curves.linear,
+                );
+              },
             ),
             Divider(
               height: 0.5,
