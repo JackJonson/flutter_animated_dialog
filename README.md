@@ -6,7 +6,7 @@ Dialog barrier include status bar at the top of screen, solved the problem of de
 
 ## demo
 
-<img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/SizeAnim.gif" width="50%">
+<img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/size.gif" width="50%">
 
 
 ## Getting Started
@@ -48,103 +48,144 @@ showAnimatedDialog(
 <table>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/DefaultToastWidget.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/default.gif" width="260px">
       <br />
-      DefaultToastWidget
-      <br />
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/FadeAnim.gif" width="260px">
-      <br />
-      FadeAnim
+      default
       <br />
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/SlideFromTopAnim.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/fade.gif" width="260px">
       <br />
-      SlideFromTopAnim
-      <br />
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/SlideFromBottomAnim.gif" width="260px">
-      <br />
-      SlideFromBottomAnim
+      fade
       <br />
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/SlideFromLeftAnim.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromTop.gif" width="260px">
       <br />
-      SlideFromLeftAnim
-      <br />
-      </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/SlideFromRightAnim.gif" width="260px">
-      <br />
-      SlideFromRightAnim
+      slideFromTop
       <br />
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/ScaleAnim.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromBottom.gif" width="260px">
       <br />
-      ScaleAnim
-      <br />
-      </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/FadeScaleAnim.gif" width="260px">
-      <br />
-      FadeScaleAnim
+      slideFromBottom
       <br />
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/RotateAnim.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromBottomFade.gif" width="260px">
       <br />
-      RotateAnim
-      <br />
-      </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/FadeRotateAnim.gif" width="260px">
-      <br />
-      FadeRotateAnim
+      slideFromBottomFade
       <br />
       </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/ScaleRotateAnim.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromLeft.gif" width="260px">
       <br />
-      ScaleRotateAnim
-      <br />
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/OnDismiss.gif" width="260px">
-      <br />
-      OnDismiss
+      slideFromLeft
       <br />
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/CustomToastWidget.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromLeftFade.gif" width="260px">
       <br />
-      CustomToastWidget
+      slideFromLeftFade
+      <br />
+      </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromRight.gif" width="260px">
+      <br />
+      slideFromRight
       <br />
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/CustomFailToastWidget.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/slideFromRightFade.gif" width="260px">
       <br />
-      CustomFailToastWidget
+      slideFromRightFade
+      <br />
+      </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/scale.gif" width="260px">
+      <br />
+      scale
+      <br />
+      </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/fadeScale.gif" width="260px">
+      <br />
+      fadeScale
       <br />
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/CustomSuccessToastWidget.gif" width="260px">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/scaleRotate.gif" width="260px">
       <br />
-      CustomSuccessToastWidget
+      scaleRotate
       <br />
     </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/rotate.gif" width="260px">
+      <br />
+      rotate
+      <br />
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/rotate3D.gif" width="260px">
+      <br />
+      rotate3D
+      <br />
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/size.gif" width="260px">
+      <br />
+      size
+      <br />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/sizeFade.gif" width="260px">
+      <br />
+      sizeFade
+      <br />
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/generalDialog.gif" width="260px">
+      <br />
+      generalDialog
+      <br />
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/listSingleSelect.gif" width="260px">
+      <br />
+      listSingleSelect
+      <br />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/listDialog.gif" width="260px">
+      <br />
+      listDialog
+      <br />
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/listMultipleSelect.gif" width="260px">
+      <br />
+      listMultipleSelect
+      <br />
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/JackJonson/flutter_animated_dialog/master/screenshots/customDialog.gif" width="260px">
+      <br />
+      customDialog
+      <br />
+    </td>
+   
   </tr>
 </table>
 
