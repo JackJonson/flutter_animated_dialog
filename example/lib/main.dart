@@ -693,7 +693,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     return ClassicListDialogWidget<ListDataModel>(
                       titleText: 'Title',
                       dataList: List.generate(
-                        20,
+                        2,
                         (index) {
                           return ListDataModel(
                               name: 'Name$index', value: 'Value$index');

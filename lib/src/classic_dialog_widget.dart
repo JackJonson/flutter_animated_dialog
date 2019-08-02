@@ -215,8 +215,6 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
     Widget contentWidget;
     if (widget.dataList != null) {
       contentWidget = ListView.builder(
-        shrinkWrap: true,
-        itemExtent: 50,
         itemBuilder: (context, index) {
           if (widget.listItem == null) {
             switch (widget.listType) {
@@ -275,7 +273,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
         itemCount: widget.dataList.length,
       );
       contentWidget = ConstrainedBox(
-        constraints: BoxConstraints.tight(Size(
+        constraints: BoxConstraints.loose(Size(
             MediaQuery.of(context).size.width - 100,
             MediaQuery.of(context).size.height - 100)),
         child: contentWidget,
