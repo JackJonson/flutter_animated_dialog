@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-
 /// Animates the rotation of a widget.
 ///
 /// Here's an illustration of the [RotationTransition] widget, with it's [turns]
@@ -46,7 +45,9 @@ class Rotation3DTransition extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     final double turnsValue = turns.value;
-    final Matrix4 transform = Matrix4.identity()..setEntry(3, 2, 0.0006)..rotateY(turnsValue);
+    final Matrix4 transform = Matrix4.identity()
+      ..setEntry(3, 2, 0.0006)
+      ..rotateY(turnsValue);
     return Transform(
       transform: transform,
       alignment: FractionalOffset(0.5, 0.5),
@@ -54,7 +55,6 @@ class Rotation3DTransition extends AnimatedWidget {
     );
   }
 }
-
 
 /// Animates the rotation of a widget.
 ///
@@ -76,7 +76,7 @@ class CustomRotationTransition extends AnimatedWidget {
     @required Animation<double> turns,
     this.alignment = Alignment.center,
     this.child,
-  }) : assert(turns != null),
+  })  : assert(turns != null),
         super(key: key, listenable: turns);
 
   /// The animation that controls the rotation of the child.
