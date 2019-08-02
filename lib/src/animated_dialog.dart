@@ -237,24 +237,33 @@ Future<T> showAnimatedDialog<T>({
                 curve: curve,
               ),
             ),
-            child: RotationTransition(
+            child: CustomRotationTransition(
               alignment: alignment,
-              turns: animation,
+              turns: Tween<double>(begin: 1, end:2).animate(
+                  CurvedAnimation(
+                      parent: animation,
+                      curve: Interval(0.0, 1.0, curve: curve))),
               child: child,
             ),
           );
           break;
         case DialogTransitionType.rotate:
-          return RotationTransition(
+          return CustomRotationTransition(
             alignment: alignment,
-            turns: animation,
+            turns: Tween<double>(begin: 1, end:2).animate(
+                CurvedAnimation(
+                    parent: animation,
+                    curve: Interval(0.0, 1.0, curve: curve))),
             child: child,
           );
           break;
         case DialogTransitionType.fadeRotate:
-          return RotationTransition(
+          return CustomRotationTransition(
             alignment: alignment,
-            turns: animation,
+            turns: Tween<double>(begin: 1, end:2).animate(
+                CurvedAnimation(
+                    parent: animation,
+                    curve: Interval(0.0, 1.0, curve: curve))),
             child: FadeTransition(
               opacity: CurvedAnimation(
                 parent: animation,
