@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.0]
 
-* TODO: Describe initial release.
+First release version
+features: Animated dialog, support fade scale rotate rotate3D size slide animations.
+
+## 0.0.1
+
+initial project
