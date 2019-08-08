@@ -29,6 +29,12 @@ class ClassicGeneralDialogWidget extends StatelessWidget {
   ///Text of positive button, the right button at the bottom of dialog
   final String positiveText;
 
+  ///TextStyle of negative button, the left button at the bottom of dialog
+  final TextStyle negativeTextStyle;
+
+  ///TextStyle of positive button, the right button at the bottom of dialog
+  final TextStyle positiveTextStyle;
+
   ///Click callback of negative button
   final VoidCallback onNegativeClick;
 
@@ -44,6 +50,8 @@ class ClassicGeneralDialogWidget extends StatelessWidget {
     this.actions,
     this.negativeText,
     this.positiveText,
+    this.negativeTextStyle,
+    this.positiveTextStyle,
     this.onNegativeClick,
     this.onPositiveClick,
   });
@@ -71,12 +79,13 @@ class ClassicGeneralDialogWidget extends StatelessWidget {
                     onPressed: onNegativeClick,
                     splashColor: Theme.of(context).splashColor,
                     highlightColor: Theme.of(context).highlightColor,
-                    child: new Text(
+                    child: Text(
                       negativeText ?? 'cancel',
-                      style: TextStyle(
-                          color: Theme.of(context).textTheme.overline.color,
-                          fontSize:
-                              Theme.of(context).textTheme.button.fontSize),
+                      style: negativeTextStyle ??
+                          TextStyle(
+                              color: Theme.of(context).textTheme.overline.color,
+                              fontSize:
+                                  Theme.of(context).textTheme.button.fontSize),
                     ),
                   )
                 : null,
@@ -85,12 +94,13 @@ class ClassicGeneralDialogWidget extends StatelessWidget {
                     onPressed: onPositiveClick,
                     splashColor: Theme.of(context).splashColor,
                     highlightColor: Theme.of(context).highlightColor,
-                    child: new Text(
+                    child: Text(
                       positiveText ?? 'confirm',
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize:
-                              Theme.of(context).textTheme.button.fontSize),
+                      style: positiveTextStyle ??
+                          TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize:
+                                  Theme.of(context).textTheme.button.fontSize),
                     ),
                   )
                 : null,
@@ -295,7 +305,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                     onPressed: widget.onNegativeClick,
                     splashColor: Theme.of(context).splashColor,
                     highlightColor: Theme.of(context).highlightColor,
-                    child: new Text(
+                    child: Text(
                       widget.negativeText ?? 'cancel',
                       style: TextStyle(
                           color: Theme.of(context).textTheme.overline.color,
@@ -328,7 +338,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                   },
               splashColor: Theme.of(context).splashColor,
               highlightColor: Theme.of(context).highlightColor,
-              child: new Text(
+              child: Text(
                 widget.positiveText ?? 'confirm',
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
