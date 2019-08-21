@@ -150,17 +150,14 @@ class ClassicListDialogWidget<T> extends StatefulWidget {
   ///Where to place control relative to the text
   final ListTileControlAffinity controlAffinity;
 
+  ///The active color of radio or checkbox
+  final Color activeColor;
+
   ///Selected indexes when [listType] is [ListType.multiSelect]
   final List<int> selectedIndexes;
 
   ///Selected index when [listType] is [ListType.singleSelect]
   final int selectedIndex;
-
-//  ///Single selection callback
-//  final OnSingleSelectionCallback onListSingleSelectionCallback;
-//
-//  ///Multiple selection callback
-//  final OnMultiSelectionCallback onListMultiSelectionCallback;
 
   ///Text of negative button, the left button at the bottom of dialog
   final String negativeText;
@@ -184,6 +181,7 @@ class ClassicListDialogWidget<T> extends StatefulWidget {
     this.onListItemClick,
     this.listType = ListType.single,
     this.controlAffinity = ListTileControlAffinity.leading,
+    this.activeColor,
     this.selectedIndexes,
     this.selectedIndex,
     this.actions,
@@ -248,6 +246,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                     widget.dataList[index].toString(),
                     style: Theme.of(context).dialogTheme.contentTextStyle,
                   ),
+                  activeColor:widget.activeColor??Theme.of(context).primaryColor,
                   value: index,
                   groupValue: selectedIndex,
                   onChanged: (value) {
@@ -271,7 +270,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                       valueList[index] = value;
                     });
                   },
-                  activeColor: Theme.of(context).accentColor,
+                  activeColor: widget.activeColor??Theme.of(context).primaryColor,
                 );
                 break;
               default:

@@ -732,6 +732,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     return ClassicListDialogWidget<ListDataModel>(
                       titleText: 'Title',
                       listType: ListType.singleSelect,
+                      activeColor: Colors.red,
                       selectedIndex: selectIndex,
                       dataList: List.generate(
                         20,
