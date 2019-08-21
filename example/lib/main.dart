@@ -770,6 +770,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       titleText: 'Title',
                       listType: ListType.multiSelect,
                       selectedIndexes: selectedIndexes,
+                      activeColor: Colors.green,
                       dataList: List.generate(
                         20,
                         (index) {
