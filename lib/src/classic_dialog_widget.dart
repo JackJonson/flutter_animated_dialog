@@ -246,7 +246,8 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                     widget.dataList[index].toString(),
                     style: Theme.of(context).dialogTheme.contentTextStyle,
                   ),
-                  activeColor:widget.activeColor??Theme.of(context).primaryColor,
+                  activeColor:
+                      widget.activeColor ?? Theme.of(context).primaryColor,
                   value: index,
                   groupValue: selectedIndex,
                   onChanged: (value) {
@@ -270,7 +271,8 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                       valueList[index] = value;
                     });
                   },
-                  activeColor: widget.activeColor??Theme.of(context).primaryColor,
+                  activeColor:
+                      widget.activeColor ?? Theme.of(context).primaryColor,
                 );
                 break;
               default:
