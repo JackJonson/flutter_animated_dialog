@@ -73,6 +73,7 @@ Future<T> showAnimatedDialog<T>({
   Curve curve = Curves.linear,
   Duration duration,
   AlignmentGeometry alignment = Alignment.center,
+  Axis axis,
 }) {
   assert(builder != null);
   assert(debugCheckHasMaterialLocalizations(context));
@@ -291,6 +292,7 @@ Future<T> showAnimatedDialog<T>({
                 parent: animation,
                 curve: curve,
               ),
+              axis: axis??Axis.vertical,
               child: child,
             ),
           );
