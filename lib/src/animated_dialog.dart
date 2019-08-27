@@ -292,7 +292,7 @@ Future<T> showAnimatedDialog<T>({
                 parent: animation,
                 curve: curve,
               ),
-              axis: axis??Axis.vertical,
+              axis: axis ?? Axis.vertical,
               child: child,
             ),
           );

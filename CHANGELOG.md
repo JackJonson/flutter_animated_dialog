@@ -1,3 +1,7 @@
+## [1.0.3]
+
+Add axis support to size animation.
+
 ## [1.0.2]
 
 Add activeColor to radio and checkbox of list item of single and multiple select dialog.
