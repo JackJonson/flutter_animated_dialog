@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:math' as math;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 import 'package:flutter/services.dart';
+
 import 'custom_dialog_transitions.dart';
 
 ///Is dialog showing
@@ -463,7 +465,7 @@ class CustomDialogWidget extends StatelessWidget {
         child: DefaultTextStyle(
           style: titleTextStyle ??
               dialogTheme.titleTextStyle ??
-              theme.textTheme.title,
+              theme.textTheme.headline6,
           child: Semantics(
             child: title,
             namesRoute: true,
@@ -480,6 +482,18 @@ class CustomDialogWidget extends StatelessWidget {
         case TargetPlatform.fuchsia:
           label = semanticLabel ??
               MaterialLocalizations.of(context)?.alertDialogLabel;
+          break;
+        case TargetPlatform.linux:
+          label = semanticLabel ??
+              MaterialLocalizations.of(context)?.alertDialogLabel;
+          break;
+        case TargetPlatform.macOS:
+          label = semanticLabel;
+          break;
+        case TargetPlatform.windows:
+          label = semanticLabel ??
+              MaterialLocalizations.of(context)?.alertDialogLabel;
+          break;
       }
     }
 
@@ -491,7 +505,7 @@ class CustomDialogWidget extends StatelessWidget {
             child: DefaultTextStyle(
               style: contentTextStyle ??
                   dialogTheme.contentTextStyle ??
-                  theme.textTheme.subhead,
+                  theme.textTheme.subtitle1,
               child: content,
             ),
           ),
@@ -503,7 +517,8 @@ class CustomDialogWidget extends StatelessWidget {
       children.add(bottomWidget);
     } else if (actions != null) {
       children.add(
-        ButtonTheme.bar(
+        ButtonBarTheme(
+          data: ButtonBarTheme.of(context),
           child: ButtonBar(
             children: actions,
           ),

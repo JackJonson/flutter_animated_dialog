@@ -276,6 +276,16 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                 );
                 break;
               default:
+                return ListTile(
+                  title: Text(
+                    widget.dataList[index].toString(),
+                    style: Theme.of(context).dialogTheme.contentTextStyle,
+                  ),
+                  onTap: widget.onListItemClick ??
+                          () {
+                        Navigator.of(context).pop(index);
+                      },
+                );
                 break;
             }
           } else {
