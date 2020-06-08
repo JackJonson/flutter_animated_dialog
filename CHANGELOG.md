@@ -1,3 +1,7 @@
+## [1.1.0]
+
+Fix health problems.
+
 ## [1.0.3]
 
 Add axis support to size animation.

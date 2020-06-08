@@ -282,7 +282,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                     style: Theme.of(context).dialogTheme.contentTextStyle,
                   ),
                   onTap: widget.onListItemClick ??
-                          () {
+                      () {
                         Navigator.of(context).pop(index);
                       },
                 );
