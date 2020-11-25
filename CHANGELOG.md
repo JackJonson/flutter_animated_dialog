@@ -1,3 +1,7 @@
+## [1.2.0]
+
+Compatible with Flutter 1.24.
+
 ## [1.1.0]
 
 Fix health problems.

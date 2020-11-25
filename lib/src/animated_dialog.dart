@@ -80,7 +80,7 @@ Future<T> showAnimatedDialog<T>({
   assert(builder != null);
   assert(debugCheckHasMaterialLocalizations(context));
 
-  final ThemeData theme = Theme.of(context, shadowThemeOnly: true);
+  final ThemeData theme = Theme.of(context);
 
   isShowing = true;
   return showGeneralDialog(
