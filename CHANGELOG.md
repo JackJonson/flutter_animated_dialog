@@ -2,6 +2,7 @@
 
 Migrate to null safety.
 Compatible with Flutter 2.0.0.
+Add [barrierColor] param.
 
 ## [1.2.0]
 
