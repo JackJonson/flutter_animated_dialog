@@ -1,3 +1,8 @@
+## [2.0.0]
+
+Migrate to null safety.
+Compatible with Flutter 2.0.0.
+
 ## [1.2.0]
 
 Compatible with Flutter 1.24.

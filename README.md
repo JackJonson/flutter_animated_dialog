@@ -16,6 +16,13 @@ dependencies:
   flutter_animated_dialog: ^1.2.0
 ```
 
+## Null safety
+
+```yaml
+dependencies:
+  flutter_animated_dialog: ^2.0.0
+```
+
 ```dart
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 ```

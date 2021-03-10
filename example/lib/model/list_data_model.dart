@@ -1,15 +1,15 @@
 ///List data model
 class ListDataModel {
   ///Name
-  String name;
+  String? name;
 
   ///Value
-  String value;
+  String? value;
 
   ListDataModel({this.name, this.value});
 
   @override
   String toString() {
-    return name;
+    return name??'';
   }
 }
