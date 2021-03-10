@@ -22,7 +22,7 @@ class Rotation3DTransition extends AnimatedWidget {
     required Animation<double> turns,
     this.alignment = Alignment.center,
     this.child,
-  })  : super(key: key, listenable: turns);
+  }) : super(key: key, listenable: turns);
 
   /// The animation that controls the rotation of the child.
   ///
@@ -76,7 +76,7 @@ class CustomRotationTransition extends AnimatedWidget {
     required Animation<double> turns,
     this.alignment = Alignment.center,
     this.child,
-  })  : super(key: key, listenable: turns);
+  }) : super(key: key, listenable: turns);
 
   /// The animation that controls the rotation of the child.
   ///

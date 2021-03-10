@@ -10,6 +10,6 @@ class ListDataModel {
 
   @override
   String toString() {
-    return name??'';
+    return name ?? '';
   }
 }

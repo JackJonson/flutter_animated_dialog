@@ -81,8 +81,7 @@ class ClassicGeneralDialogWidget extends StatelessWidget {
                       negativeText ?? 'cancel',
                       style: negativeTextStyle ??
                           TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.caption!.color,
+                              color: Theme.of(context).textTheme.caption!.color,
                               fontSize:
                                   Theme.of(context).textTheme.button!.fontSize),
                     ),
@@ -314,17 +313,16 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
       content: contentWidget,
       actions: widget.actions ??
           [
-            if(widget.onNegativeClick != null)
-                TextButton(
-                    onPressed: widget.onNegativeClick,
-                    child: Text(
-                      widget.negativeText ?? 'cancel',
-                      style: TextStyle(
-                          color: Theme.of(context).textTheme.caption!.color,
-                          fontSize:
-                              Theme.of(context).textTheme.button!.fontSize),
-                    ),
-                  ),
+            if (widget.onNegativeClick != null)
+              TextButton(
+                onPressed: widget.onNegativeClick,
+                child: Text(
+                  widget.negativeText ?? 'cancel',
+                  style: TextStyle(
+                      color: Theme.of(context).textTheme.caption!.color,
+                      fontSize: Theme.of(context).textTheme.button!.fontSize),
+                ),
+              ),
             TextButton(
               onPressed: widget.onPositiveClick ??
                   () {
@@ -352,7 +350,7 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
                   },
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
+                  (Set<MaterialState> states) {
                     if (states.contains(MaterialState.pressed)) {
                       return Theme.of(context)
                           .colorScheme
