@@ -15,7 +15,6 @@ typedef OnMultiSelectionCallback = void Function(List<int> selectedIndexes);
 ///file name: classic_dialog_widget.dart
 ///description: General dialog
 ///
-@immutable
 class ClassicGeneralDialogWidget extends StatelessWidget {
   ///Title text of the dialog
   final String? titleText;
@@ -58,7 +57,6 @@ class ClassicGeneralDialogWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return CustomDialogWidget(
       title: titleText != null
           ? Text(
@@ -228,7 +226,6 @@ class ClassicListDialogWidgetState<T> extends State<ClassicListDialogWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     Widget contentWidget = ListView.builder(
       shrinkWrap: true,
       itemBuilder: (context, index) {

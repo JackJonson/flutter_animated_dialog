@@ -71,12 +71,12 @@ Future<T?> showAnimatedDialog<T extends Object?>({
   required BuildContext context,
   bool barrierDismissible = false,
   required WidgetBuilder builder,
-  animationType = DialogTransitionType.fade,
+  animationType = DialogTransitionType.size,
   Curve curve = Curves.linear,
   Duration? duration,
   Alignment alignment = Alignment.center,
   Color? barrierColor,
-  Axis? axis,
+  Axis? axis = Axis.horizontal,
 }) {
   assert(debugCheckHasMaterialLocalizations(context));
 
