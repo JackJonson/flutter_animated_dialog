@@ -44,11 +44,11 @@ class _MyAppState extends State<MyApp> {
 // The StatefulWidget's job is to take in some data and create a State class.
 // In this case, the Widget takes a title, and creates a _MyHomePageState.
 class MyHomePage extends StatefulWidget {
-  final String title;
+  final String? title;
 
-  final VoidCallback onSetting;
+  final VoidCallback? onSetting;
 
-  MyHomePage({Key key, this.title, this.onSetting}) : super(key: key);
+  MyHomePage({Key? key, this.title, this.onSetting}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -59,23 +59,23 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Whether the green box should be visible or invisible
 
-  String selectedIndexText;
+  String? selectedIndexText;
 
-  int selectIdx;
+  int? selectIdx;
 
-  String singleSelectedIndexText;
+  String? singleSelectedIndexText;
 
-  int selectIndex;
+  int? selectIndex;
 
-  String multiSelectedIndexesText;
+  String? multiSelectedIndexesText;
 
-  List<int> selectedIndexes;
+  List<int>? selectedIndexes;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title ?? ""),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
@@ -683,7 +683,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List dialog ${selectedIndexText != null && selectedIndexText.isNotEmpty ? '(index:' + selectedIndexText + ')' : ''}",
+                "List dialog ${selectedIndexText != null && selectedIndexText!.isNotEmpty ? '(index:' + selectedIndexText! + ')' : ''}",
               ),
               onTap: () async {
                 int index = await showAnimatedDialog(
@@ -722,7 +722,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List single select${singleSelectedIndexText != null && singleSelectedIndexText.isNotEmpty ? '(index:' + singleSelectedIndexText + ')' : ''}",
+                "List single select${singleSelectedIndexText != null && singleSelectedIndexText!.isNotEmpty ? '(index:' + singleSelectedIndexText! + ')' : ''}",
               ),
               onTap: () async {
                 int index = await showAnimatedDialog(
@@ -733,7 +733,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       titleText: 'Title',
                       listType: ListType.singleSelect,
                       activeColor: Colors.red,
-                      selectedIndex: selectIndex,
+                      selectedIndex: selectIndex!,
                       dataList: List.generate(
                         20,
                         (index) {
@@ -759,7 +759,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text(
-                "List multiple select${multiSelectedIndexesText != null && multiSelectedIndexesText.isNotEmpty ? '(index:' + multiSelectedIndexesText + ')' : ''}",
+                "List multiple select${multiSelectedIndexesText != null && multiSelectedIndexesText!.isNotEmpty ? '(index:' + multiSelectedIndexesText! + ')' : ''}",
               ),
               onTap: () async {
                 List<int> indexes = await showAnimatedDialog(
@@ -769,7 +769,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     return ClassicListDialogWidget<ListDataModel>(
                       titleText: 'Title',
                       listType: ListType.multiSelect,
-                      selectedIndexes: selectedIndexes,
+                      selectedIndexes: selectedIndexes!,
                       activeColor: Colors.green,
                       dataList: List.generate(
                         20,
@@ -788,7 +788,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print('selectedIndex:${selectedIndexes?.toString()}');
                 setState(() {
                   this.multiSelectedIndexesText =
-                      selectedIndexes != null && selectedIndexes.length > 0
+                      selectedIndexes != null && selectedIndexes!.length > 0
                           ? selectedIndexes.toString()
                           : '';
                 });

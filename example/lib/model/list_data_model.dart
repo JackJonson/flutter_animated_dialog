@@ -6,7 +6,7 @@ class ListDataModel {
   ///Value
   String value;
 
-  ListDataModel({this.name, this.value});
+  ListDataModel({required this.name, required this.value});
 
   @override
   String toString() {

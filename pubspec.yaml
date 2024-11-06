@@ -5,7 +5,7 @@ homepage: https://github.com/JackJonson/flutter_animated_dialog
 email: yswing1@gmail.com
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
   flutter:
@@ -20,6 +20,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  uses-material-design: true
 
   # To add assets to your package, add an assets section, like this:
   # assets:
