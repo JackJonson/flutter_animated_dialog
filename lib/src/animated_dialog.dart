@@ -465,7 +465,7 @@ class CustomDialogWidget extends StatelessWidget {
         child: DefaultTextStyle(
           style: titleTextStyle ??
               dialogTheme.titleTextStyle ??
-              theme.textTheme.headline6,
+              theme.textTheme.headlineMedium,
           child: Semantics(
             child: title,
             namesRoute: true,
