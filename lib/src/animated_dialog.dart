@@ -59,7 +59,7 @@ Future<T?> showAnimatedDialog<T>({
     },
     barrierDismissible: barrierDismissible,
     barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-    barrierColor: Colors.black54,
+    barrierColor: Colors.black.withOpacity(0.8),
     transitionDuration: duration ?? const Duration(milliseconds: 400),
     transitionBuilder: (BuildContext context, Animation<double> animation,
         Animation<double> secondaryAnimation, Widget child) {
